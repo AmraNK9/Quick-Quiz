@@ -52,13 +52,34 @@ for(let i=0;i<answer.length;i++){
 answer[i].addEventListener("click",
 (e)=>{
     console.log("this is work"+i);
-  
+    let classValue;
     console.log(e.target.dataset["number"]);
     if(question[questionId].answer==e.target.dataset["number"]){
        console.log("this is true");
+       classValue = "correct"
+       e.target.parentElement.classList.add(classValue)
        question.splice(questionId,1);
-       showQuestion();
+       setTimeout( 
+        ()=>{
+            e.target.parentElement.classList.remove(classValue);
+            showQuestion();
+        }
+        ,1000);
+      
     }
+    else{
+        console.log("false");
+        classValue = "incorrect";
+        e.target.parentElement.classList.add(classValue);
+        question.splice(questionId,1);
+        setTimeout( 
+            ()=>{
+                e.target.parentElement.classList.remove(classValue);
+                showQuestion();
+            }
+            ,1000);
+    }
+
 }
 )
 }

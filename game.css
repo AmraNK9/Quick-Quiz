@@ -56,3 +56,10 @@ h2{
     margin: 0 20px;
     padding: 0%;
 }
+
+.correct{
+    background-color: green;
+}
+.incorrect{
+    background-color: red;
+}
