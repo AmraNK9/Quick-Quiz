@@ -45,8 +45,8 @@ h2{
 .prefix-container{
     background-color: #56a5eb;
    box-sizing: border-box;
-   padding: 0.7rem 2rem;
-   color: #333;
+   padding: 0.5rem 1rem;
+   color: #ecf5ff;
 }
 .answer{
     text-align: center;
@@ -63,3 +63,4 @@ h2{
 .incorrect{
     background-color: red;
 }
+

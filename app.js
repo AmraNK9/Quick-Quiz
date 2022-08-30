@@ -1,5 +1,7 @@
-const answer = Array.from(document.querySelectorAll(".answer"))
+const answer = Array.from(document.querySelectorAll(".answer"));
 const questionDb = document.querySelector("#question");
+const questionCounter = document.querySelector("#question-counter");
+
 
 const Mainquestion = [
     {
@@ -30,13 +32,21 @@ const Mainquestion = [
 
 //functionSetup
 const question = [...Mainquestion];
+let questionCount = 0;
+
 
 const showQuestion = ()=>{
     if(question.length === 0){
         return window.location.assign("/end.html")
         
     }
-    const  questionId = Math.floor(Math.random()*question.length);
+
+
+const  questionId = Math.floor(Math.random()*question.length);
+
+questionCount++;
+questionCounter.innerHTML = `${questionCount}/${Mainquestion.length}`
+
 questionDb.innerHTML = question[questionId].question;
 
 
