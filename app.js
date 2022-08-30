@@ -81,6 +81,7 @@ answer[i].addEventListener("click",
         console.log("false");
         classValue = "incorrect";
         e.target.parentElement.classList.add(classValue);
+        question.splice(questionId,1);
         setTimeout( 
             ()=>{
                 e.target.parentElement.classList.remove(classValue);
