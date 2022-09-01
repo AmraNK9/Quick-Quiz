@@ -1,0 +1,18 @@
+[
+    {"question":"what is the answer of these question",
+    "choice1":"choice1",
+    "choice2":"choice2",
+    "choice3":"choice3",
+    "choice4":"choice4",
+    "answer":"1"},
+    {"question":"What is the famous japan actor ",
+    "choice1":"thu ta","choice2":"yo ma ti",
+    "choice3":"kim mot shi","choice4":"Nay Htoo Naing",
+    "answer":"3"},
+    {"question":"What is Your Lover",
+    "choice1":"Wut Mon Shwe Ye",
+    "choice2":"Ning Sian Kim",
+    "choice3":"Shwe Mon Ya Ti",
+    "choice4":"Nan Khin Lay",
+    "answer":"2"}
+]

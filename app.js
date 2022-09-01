@@ -10,13 +10,31 @@ let score = 0;
 let questionId;
 
 let Mainquestion = [];
-fetch("question.json").then(
+fetch("https://opentdb.com/api.php?amount=10&type=multiple").then(
     (res)=>{
         return res.json();
     }
 ).then(
     (json)=>{
-        Mainquestion = json;
+        Mainquestion = json.results.map(
+            (value)=>{
+                const formatQuestion = {
+                    question:value.question
+                }
+                answerArray = [...value.incorrect_answers];
+             let answerId =Math.floor(Math.random()*4);
+                answerArray.splice(answerId,0,value.correct_answer);
+                formatQuestion.answer = answerId+1;
+                answerArray.forEach(
+                    (value,index)=>{
+                        formatQuestion[`choice${index+1}`] = value;
+                    }
+                )
+                console.log(formatQuestion)
+                return formatQuestion;
+            }
+        );
+ 
         question = [...Mainquestion];
         showQuestion();
     }
