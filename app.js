@@ -1,52 +1,50 @@
 const answer = Array.from(document.querySelectorAll(".answer"));
 const questionDb = document.querySelector("#question");
 const questionCounter = document.querySelector("#question-counter");
+const scoreDb = document.querySelector("#score");
+const progressBar = document.querySelector('#progressBar');
 
-
-const Mainquestion = [
-    {
-        question:"what is the answer of these question",
-        choice1:"choice1",
-        choice2:"choice2",
-        choice3:"choice3",
-        choice4:"choice4",
-        answer:"1"
-    },
-    {
-        question:"What is the famous japan actor ",
-        choice1:"thu ta",
-        choice2:"yo ma ti",
-        choice3:"kim mot shi",
-        choice4:"Nay Htoo Naing",
-        answer:"3",
-    },
-    {
-        question:"What is the 2 japan actor ",
-        choice1:"thu ta",
-        choice2:"yo ma ti",
-        choice3:"kim mot shi",
-        choice4:"Nay Htoo Naing",
-        answer:"2",
-    },
-]
-
-//functionSetup
-const question = [...Mainquestion];
+const scorebonus = 10;
 let questionCount = 0;
+let score = 0;
+let questionId;
+
+let Mainquestion = [];
+fetch("question.json").then(
+    (res)=>{
+        return res.json();
+    }
+).then(
+    (json)=>{
+        Mainquestion = json;
+        question = [...Mainquestion];
+        showQuestion();
+    }
+
+).catch(
+    (err)=>{
+        console.log(err)
+    }
+)
+let question = [];
+//functionSetup
+
 
 
 const showQuestion = ()=>{
+ 
     if(question.length === 0){
-        return window.location.assign("/end.html")
+        localStorage.setItem("mostRecentScore",score);
+        return window.location.assign("/end.html");
         
     }
 
 
-const  questionId = Math.floor(Math.random()*question.length);
+  questionId = Math.floor(Math.random()*question.length);
 
 questionCount++;
 questionCounter.innerHTML = `${questionCount}/${Mainquestion.length}`
-
+progressBar.style.width = `${questionCount/Mainquestion.length*100}%`
 questionDb.innerHTML = question[questionId].question;
 
 
@@ -57,44 +55,40 @@ answer.forEach(
         item.innerHTML = `${question[questionId][forChoice]}`
     }
 )
+
+
+}
     
-for(let i=0;i<answer.length;i++){
-answer[i].addEventListener("click",
+answer.forEach(
+    (answer)=>{
+        answer.addEventListener("click",
 (e)=>{
-    console.log("this is work"+i);
+
     let classValue;
     console.log(e.target.dataset["number"]);
     if(question[questionId].answer==e.target.dataset["number"]){
        console.log("this is true");
        classValue = "correct"
        e.target.parentElement.classList.add(classValue)
-       question.splice(questionId,1);
-       setTimeout( 
+       score+= scorebonus;
+        scoreDb.innerHTML = score;
+      
+    }
+    else{
+
+        classValue = "incorrect";
+        e.target.parentElement.classList.add(classValue);
+     
+    }
+    question.splice(questionId,1);
+    setTimeout( 
         ()=>{
             e.target.parentElement.classList.remove(classValue);
             showQuestion();
         }
         ,1000);
-      
-    }
-    else{
-        console.log("false");
-        classValue = "incorrect";
-        e.target.parentElement.classList.add(classValue);
-        question.splice(questionId,1);
-        setTimeout( 
-            ()=>{
-                e.target.parentElement.classList.remove(classValue);
-                showQuestion();
-            }
-            ,1000);
-    }
-
 }
 )
-}
+    }
+)
 
-
-}
-
-showQuestion();

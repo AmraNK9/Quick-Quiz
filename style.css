@@ -29,7 +29,7 @@
 a{
     all: unset;
 }
-.btn{
+.btn,li{
     border:2px solid #56a5eb;
 
     box-sizing: border-box;
@@ -39,8 +39,9 @@ a{
     margin-top: 8px;
     color: #56a5eb;
     text-decoration: none;
+    list-style: none;
 }
-.btn:hover{
+.btn,li:hover{
     box-shadow: 2px 4px 10px #56a5eb;
     transform: scale(103%);
     cursor: pointer;
@@ -54,3 +55,12 @@ h1{
     font-size: 30px;
     color: #56a5eb;
 }
+
+li{
+    margin-left: -23px;
+    border-radius: 20px;
+    font-size: large;
+    border: 0.5px solid gold;
+    color: aqua;
+}
+

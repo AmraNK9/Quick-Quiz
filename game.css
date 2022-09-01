@@ -7,7 +7,7 @@
 }
 .container{
     display: flex;
-    align-items: flex-start;
+    align-items: center;
     flex-direction: column;
     margin: 0 25px auto;
 }
@@ -47,6 +47,7 @@ h2{
    box-sizing: border-box;
    padding: 0.5rem 1rem;
    color: #ecf5ff;
+
 }
 .answer{
     text-align: center;
@@ -62,5 +63,38 @@ h2{
 }
 .incorrect{
     background-color: red;
+}
+
+.hud{
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+}
+
+
+p{
+    text-align: center;
+}
+h1{
+    text-align: center;
+}
+
+.progressBarBox{
+
+    width: 100%;
+    border: 0.2px solid #333;
+    height: 2px;
+}
+
+#progressBar{
+    background-color:greenyellow;
+    height: 98%;
+    width: 0%;
+}
+#score{
+    color: #333;
+}
+#question-counter{
+    color: #333;
 }
 
