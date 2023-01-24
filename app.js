@@ -53,7 +53,7 @@ const showQuestion = ()=>{
  
     if(question.length === 0){
         localStorage.setItem("mostRecentScore",score);
-        return window.location.assign("/end.html");
+        return window.location.assign("end.html");
         
     }
 
